@@ -1,0 +1,26 @@
+
+<table>
+    <% stock.forEach(function(stock) { %>
+      <th><h3>Name</h3></th>
+      <th><h3>Available Units</h3></th>
+      <tbody>
+        <tr>
+          <td>
+            <p><%= stock.name %></p>
+          </td>
+          <td>
+            <p><%= stock.available_units %></p>
+          </td>
+          <td>
+            <p><%= stock.price_per_units %></p>
+          </td>
+          <td>
+            <p><button id="buyStock">Buy Stock</button></p>
+          </td>
+        </tr>
+      </tbody>
+    <% }); %>
+  </table>
+  <script>
+    document.getElementById("buyStock").onclick = function() {buyStock()};
+  </script>
