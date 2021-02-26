@@ -3,7 +3,7 @@ const userStock = require("../Models/userStock");
 Stock = require("../Models/stockModel");
 userStock= require("../Models/userStock");
 
-exports.index = function (req, res) {
+ function buyStock(req, res) {
     Stock.get(function (err, stock) {
         if (err) {
             res.json({

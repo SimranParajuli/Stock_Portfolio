@@ -1,11 +1,13 @@
 let express = require('express')
 let app = express();
 app.set('view-engine', 'ejs');
-let apiRoutes = require("./api-routes")
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+let apiRoutes = require("./Routes/api-routes")
 
 
 
-const verifyToken = require('./verifyToken');
+
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
@@ -25,13 +27,4 @@ mongoose.connect('mongodb://localhost:27017/stockDB', { useNewUrlParser: true});
 var db = mongoose.connection;
 
 
-app.get('/home', verifyToken, (req, res) => {
-   
-   db.collection('stocks').find({}).toArray(function (err, result) {
-      console.log("Available Stocks: " + result);
-   res.render('home.ejs', {
-      stock :result
-   });
-});
 
-});

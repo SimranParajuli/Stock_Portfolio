@@ -1,4 +1,4 @@
-Stock = require('../stockModel');
+Stock = require('../Models/stockModel');
 const bodyParser=require('body-parser')
 const {parse}=require('querystring')
 

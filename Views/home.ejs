@@ -1,6 +1,5 @@
-
 <table>
-    <% stock.forEach(function(stock) { %>
+    <% if (stock.if_available == true){stock.forEach(function(stock) { %>
       <th><h3>Name</h3></th>
       <th><h3>Available Units</h3></th>
       <tbody>
@@ -19,7 +18,7 @@
           </td>
         </tr>
       </tbody>
-    <% }); %>
+    <%} }); %>
   </table>
   <script>
     document.getElementById("buyStock").onclick = function() {buyStock()};

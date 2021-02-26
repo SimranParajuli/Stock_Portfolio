@@ -1,8 +1,10 @@
 let express = require('express')
 let app = express();
 app.set('view-engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
 
-const User = require('../userModel');
+const User = require('../Models/userModel');
 const bodyParser=require('body-parser')
 const {parse}=require('querystring');
 const dotenv = require('dotenv');
@@ -51,6 +53,7 @@ exports.view = function (req, res) {
     if(!validPass) return res.status(400).send("Invalid Password");
 
     const token = jwt.sign({name: user.name}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
-
+    res.header('auth-token', token);
+    res.redirect('/home');
+    
 };
